@@ -1,0 +1,21 @@
+# First-boot profile patch for the Railway deployment. The entrypoint copies it
+# to $DSH_HOME/profiles/web/cordis.patch.yml only when that file does not exist
+# yet; after that, Settings -> Models in the Web UI owns the file.
+#
+# Claude Sonnet is the starting model. To move to an open-weight model later,
+# add a "Custom model API" provider (OpenAI Chat Completions protocol) in
+# Settings -> Models and select it; nothing here needs to change.
+
+- id: llm-pi-ai
+  config:
+    providers:
+      anthropic:
+        apiKeyEnv: ANTHROPIC_API_KEY
+        models:
+          - id: claude-sonnet-5-5
+            contextWindow: 1000000
+
+- id: agent-default-model
+  config:
+    provider: anthropic
+    model: claude-sonnet-5-5

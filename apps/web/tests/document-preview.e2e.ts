@@ -1654,7 +1654,7 @@ describe.skipIf(MODE === 'record')('web e2e: Host Office preview', () => {
       for (const colorScheme of ['dark', 'light'] as const) {
         await page.emulateMedia({ colorScheme })
         await expect.poll(() => preview.locator('[data-pdf-preview]').evaluate(node => getComputedStyle(node).backgroundColor))
-          .toBe(colorScheme === 'dark' ? 'rgb(21, 21, 23)' : 'rgb(235, 238, 242)')
+          .toBe(colorScheme === 'dark' ? 'rgb(21, 17, 18)' : 'rgb(236, 228, 224)')
         await expectPdfPageSpacing(preview)
         await copyPdfText(page, preview, '中文文档')
         await successShot(page, `office-background-${colorScheme}`)

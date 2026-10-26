@@ -1,0 +1,8 @@
+.git
+**/node_modules
+**/lib
+**/*.tsbuildinfo
+.env
+apps/web/dist
+apps/desktop/.desktop-build
+coverage

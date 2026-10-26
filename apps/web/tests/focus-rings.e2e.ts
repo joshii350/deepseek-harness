@@ -104,7 +104,7 @@ it.each(['light', 'dark'] as const)('assembled app (%s): pointer keys stay silen
   await connectFreshWorkspace(page, scaffold.workspaceCwd)
   await expect.poll(() => page.locator('body').getAttribute('data-ds-dark-theme')).toBe(theme === 'dark' ? '' : null)
   const trigger = page.getByRole('button', { name: /^Access mode, current:/ })
-  expect((await paint(trigger)).focusColor).toBe(theme === 'dark' ? 'rgb(122, 170, 255)' : 'rgb(65, 118, 230)')
+  expect((await paint(trigger)).focusColor).toBe(theme === 'dark' ? 'rgb(236, 92, 112)' : 'rgb(200, 16, 46)')
 
   await trigger.click()
   await page.getByRole('menu').waitFor()
@@ -505,7 +505,7 @@ describe('source-compiled supplementary focus paint', () => {
     const light = await ringReport(button)
     expect(light.style).not.toBe('none')
     expect(light.width).toBe('2px')
-    expect(light.color).toBe('rgb(65, 118, 230)')
+    expect(light.color).toBe('rgb(200, 16, 46)')
     expect(light.contrast).not.toBeNull()
     expect(light.contrast!).toBeGreaterThanOrEqual(3)
 

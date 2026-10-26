@@ -66,12 +66,12 @@ function expectConsumerColors(source: string, palette: Map<string, string>): voi
 }
 
 const lightColors = {
-  background: [245, 247, 250],
-  backing: [202, 210, 219],
-  detail: [202, 210, 219],
-  inset: [237, 240, 244],
-  shadow: [237, 240, 244],
-  surface: [237, 240, 244],
+  background: [245, 240, 237],
+  backing: [210, 199, 195],
+  detail: [210, 199, 195],
+  inset: [238, 231, 228],
+  shadow: [238, 231, 228],
+  surface: [238, 231, 228],
 }
 
 it('preserves the original light artwork colors, including surface-colored insets and shadows', () => {
@@ -80,19 +80,19 @@ it('preserves the original light artwork colors, including surface-colored inset
 
 it.each([false, true])('defines the approved light static steps in the dark=%s palette', (dark) => {
   const palette = definitions(dark)
-  expect(resolveColor(palette, '--dsw-static-neutral-bluish-55')).toEqual([245, 247, 250])
-  expect(resolveColor(palette, '--dsw-static-neutral-bluish-90')).toEqual([237, 240, 244])
-  expect(resolveColor(palette, '--dsw-static-neutral-bluish-310')).toEqual([202, 210, 219])
+  expect(resolveColor(palette, '--dsw-static-neutral-bluish-55')).toEqual([245, 240, 237])
+  expect(resolveColor(palette, '--dsw-static-neutral-bluish-90')).toEqual([238, 231, 228])
+  expect(resolveColor(palette, '--dsw-static-neutral-bluish-310')).toEqual([210, 199, 195])
 })
 
 it('resolves the dark artwork colors through the actual static palette', () => {
   expect(illustrationColors(definitions(true))).toEqual({
-    background: [44, 44, 46],
-    backing: [67, 69, 74],
-    detail: [129, 133, 140],
-    inset: [67, 69, 74],
-    shadow: [67, 69, 74],
-    surface: [97, 102, 107],
+    background: [45, 39, 38],
+    backing: [70, 62, 61],
+    detail: [133, 121, 118],
+    inset: [70, 62, 61],
+    shadow: [70, 62, 61],
+    surface: [99, 89, 87],
   })
 })
 
