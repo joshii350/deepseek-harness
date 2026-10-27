@@ -26,7 +26,7 @@ body {
      Firefox macOS equivalent; other engines ignore both lines. */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--dsw-alias-label-primary, #0f1115);
+  color: var(--dsw-alias-label-primary, #1a1414);
   background: var(--dsw-alias-bg-base, #fff);
   /* Supporting browsers insert CJK/Latin spacing in inherited prose. */
   text-autospace: normal;

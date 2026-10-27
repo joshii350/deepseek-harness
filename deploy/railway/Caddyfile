@@ -1,0 +1,13 @@
+# Railway terminates TLS and forwards to $PORT. Caddy keeps the browser-facing
+# Host header (dsh's trust fence checks it) and marks the session cookie Secure.
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT} {
+	encode gzip zstd
+	reverse_proxy 127.0.0.1:3080 {
+		header_down Set-Cookie "^(.*)$" "$1; Secure"
+	}
+}
