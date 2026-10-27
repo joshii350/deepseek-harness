@@ -31,7 +31,10 @@ FROM node:24-bookworm-slim
 RUN apt-get update \
   && apt-get install -y --no-install-recommends git ripgrep bubblewrap ca-certificates \
   && rm -rf /var/lib/apt/lists/*
-COPY --from=caddy:2.10 /usr/bin/caddy /usr/bin/caddy
+# The upstream binary carries a cap_net_bind_service file capability, which
+# hosts that drop capabilities (Render) refuse to exec; install drops it.
+COPY --from=caddy:2.10 /usr/bin/caddy /tmp/caddy
+RUN install -m 0755 /tmp/caddy /usr/bin/caddy && rm /tmp/caddy
 
 COPY --from=build /app /app
 COPY deploy/railway/Caddyfile /etc/caddy/Caddyfile
